@@ -58,9 +58,10 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
+        rm -rf ./tmp && rm -rf ./config
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        cd openwrt && rm -rf ./tmp && rm -rf ./config
+
 
     - name: Load custom feeds
       run: |
